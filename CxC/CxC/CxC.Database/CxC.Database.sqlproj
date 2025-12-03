@@ -5,6 +5,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8D4E6848-EF26-413F-8C2E-1D057AABC360}</ProjectGuid>
     <ProjectType>Database</ProjectType>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
+    <TargetDatabasePlatform>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</TargetDatabasePlatform>
     <Name>CxC.Database</Name>
     <RootNamespace>CxC.Database</RootNamespace>
     <AssemblyName>CxC.Database</AssemblyName>
