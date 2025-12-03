@@ -42,7 +42,7 @@
     public string? ReturnUrl { get; set; }
     private bool isSubmitting;
 
-    private async Task OnSubmit()
+    private async Task OnSubmit(LoginModel _)
     {
         isSubmitting = true;
         var userSession = await AuthService.SignInAsync(model.Usuario, model.Contrasena);
