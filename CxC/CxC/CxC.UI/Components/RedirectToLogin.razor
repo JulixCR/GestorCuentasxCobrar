@@ -1,0 +1,17 @@
+@inject NavigationManager NavigationManager
+
+<div class="alert alert-warning" role="alert">
+    Debe iniciar sesión para continuar. Redirigiendo...
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        var returnUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+        var loginUrl = string.IsNullOrWhiteSpace(returnUrl)
+            ? "login"
+            : $"login?returnUrl={Uri.EscapeDataString(returnUrl)}";
+
+        NavigationManager.NavigateTo(loginUrl, true);
+    }
+}
