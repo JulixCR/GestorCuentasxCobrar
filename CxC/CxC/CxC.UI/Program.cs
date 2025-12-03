@@ -16,7 +16,11 @@ builder.Services.AddAuthentication(options =>
         options.DefaultScheme = "Cookies";
         options.DefaultChallengeScheme = "Cookies";
     })
-    .AddCookie("Cookies");
+    .AddCookie("Cookies", options =>
+    {
+        options.LoginPath = "/login";
+        options.AccessDeniedPath = "/denied"; // opcional
+    });
 
 builder.Services.AddAuthorization();
 builder.Services.AddScoped<ProtectedSessionStorage>();

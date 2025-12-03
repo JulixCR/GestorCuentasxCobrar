@@ -1,14 +1,15 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">CxC.UI</a>
-    </div>
-</div>
+﻿<AuthorizeView>
+    <Authorized>
+        <div class="top-row ps-3 navbar navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="">CxC.UI</a>
+            </div>
+        </div>
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+        <input type="checkbox" title="Navigation menu" class="navbar-toggler" />
 
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <AuthorizeView>
-        <Authorized>
+        <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+
             <nav class="flex-column">
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
@@ -28,13 +29,7 @@
                     </NavLink>
                 </div>
             </nav>
-        </Authorized>
-        <NotAuthorized>
-            <div class="p-3 text-center">
-                <p class="text-muted mb-2">Ingrese para acceder al menú</p>
-                <NavLink class="btn btn-sm btn-primary" href="login">Ir a login</NavLink>
-            </div>
-        </NotAuthorized>
-    </AuthorizeView>
-</div>
+        </div>
+    </Authorized>
+</AuthorizeView>
 

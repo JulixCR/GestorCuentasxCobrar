@@ -1,28 +1,25 @@
-﻿@inherits LayoutComponentBase
+﻿@using CxC.UI.Services
+@inherits LayoutComponentBase
 
 @inject AuthService AuthService
 @inject NavigationManager NavigationManager
 
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
     <main>
-        <div class="top-row px-4 d-flex justify-content-between align-items-center">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-            <AuthorizeView>
-                <Authorized>
+        <AuthorizeView>
+            <Authorized>
+                <div class="sidebar">
+                    <NavMenu />
+                </div>
+                <div class="top-row px-4 d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center gap-2">
                         <span class="text-muted">Hola, @context.User.Identity?.Name</span>
                         <button class="btn btn-sm btn-outline-secondary" @onclick="Logout">Cerrar sesión</button>
                     </div>
-                </Authorized>
-                <NotAuthorized>
-                    <a class="btn btn-sm btn-primary" href="login">Iniciar sesión</a>
-                </NotAuthorized>
-            </AuthorizeView>
-        </div>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+
 
         <article class="content px-4">
             @Body
