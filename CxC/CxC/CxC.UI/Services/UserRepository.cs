@@ -1,6 +1,7 @@
 using CxC.UI.Data;
 using CxC.UI.Models;
 using Dapper;
+using System.Data;
 
 namespace CxC.UI.Services;
 
@@ -13,11 +14,12 @@ public class UserRepository : IUserRepository
         _connectionFactory = connectionFactory;
     }
 
-    public async Task<UserRecord?> GetUserAsync(string username)
+    public async Task<UserRecord?> GetUserAsync(string username, string password)
     {
-        const string query = @"SELECT TOP 1 Id, Usuario, Nombre, Contrasena FROM Usuarios WHERE Usuario = @Username";
-
         using var connection = _connectionFactory.CreateConnection();
-        return await connection.QuerySingleOrDefaultAsync<UserRecord>(query, new { Username = username });
+        return await connection.QuerySingleOrDefaultAsync<UserRecord>(
+            "PA_ValidarUsuario",
+            new { Usuario = username, Contrasena = password },
+            commandType: CommandType.StoredProcedure);
     }
 }

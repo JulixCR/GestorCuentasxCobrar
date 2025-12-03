@@ -16,18 +16,13 @@ public class AuthService
 
     public async Task<UserSession?> SignInAsync(string username, string password)
     {
-        var user = await _repository.GetUserAsync(username);
+        var user = await _repository.GetUserAsync(username, password);
         if (user is null)
         {
             return null;
         }
 
-        if (!VerifyPassword(password, user.Contrasena))
-        {
-            return null;
-        }
-
-        var session = new UserSession(user.Id, user.Usuario, user.Nombre, "User");
+        var session = new UserSession(user.IdUsuario, user.Usuario, user.NombreCompleto, "User");
         await _authenticationStateProvider.SignInAsync(session);
         return session;
     }
@@ -37,8 +32,4 @@ public class AuthService
         return _authenticationStateProvider.SignOutAsync();
     }
 
-    private static bool VerifyPassword(string providedPassword, string storedPassword)
-    {
-        return !string.IsNullOrWhiteSpace(storedPassword) && storedPassword.Trim() == providedPassword.Trim();
-    }
 }

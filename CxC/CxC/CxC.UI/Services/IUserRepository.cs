@@ -4,5 +4,5 @@ namespace CxC.UI.Services;
 
 public interface IUserRepository
 {
-    Task<UserRecord?> GetUserAsync(string username);
+    Task<UserRecord?> GetUserAsync(string username, string password);
 }
